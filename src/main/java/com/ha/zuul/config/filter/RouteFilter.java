@@ -6,19 +6,19 @@ import com.netflix.zuul.exception.ZuulException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class RoutingFilter extends ZuulFilter {
+public class RouteFilter extends ZuulFilter {
 
     private boolean execute;
     private int order;
 
-    public RoutingFilter(int order, boolean execute) {
+    public RouteFilter(int order, boolean execute) {
         this.order = order;
         this.execute = execute;
     }
 
     @Override
     public String filterType() {
-        return RoutingType.ROUTING.value;
+        return RoutingType.ROUTE.value;
     }
 
     @Override
