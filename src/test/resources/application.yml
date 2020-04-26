@@ -1,0 +1,28 @@
+zuul:
+  routes:
+    node:
+      path: /users/**
+      url: http://localhost:8001/ha/api/users
+      stripPrefix: true
+
+    # http://localhost:8084/devices/** 로 요청하게 된다.
+    node1:
+      path: /devices/**
+      url: http://localhost:8001
+      stripPrefix: false
+
+    # http://localhost:8084/** 로 요청하게 된다.
+    # stripPrefix 기본값은 true 이다.
+    node2:
+      path: /devices/**
+      url: http://localhost:8001
+      stripPrefix: true
+
+  host:
+    # default 값 10,000ms
+    socket-timeout-millis: 5000
+    # default 200
+    max-total-connections: 200
+mock:
+  server:
+    port: 8001
